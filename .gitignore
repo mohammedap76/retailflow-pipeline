@@ -1,0 +1,25 @@
+# Environment variables - NEVER commit passwords
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Airflow
+airflow/logs/
+airflow/plugins/
+
+# Data files
+data/
+
+# OS
+.DS_Store
+Thumbs.db
