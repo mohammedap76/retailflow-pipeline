@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: raw
+    database: RETAILFLOW_DB
+    schema: RAW
+    description: "Raw retail data loaded from Python scripts"
+    tables:
+      - name: RAW_CUSTOMERS
+        description: "Raw customer data -- 1000 records"
+        columns:
+          - name: customer_id
+            description: "Unique customer identifier"
+          - name: email
+            description: "Customer email address"
+          - name: region
+            description: "Geographic sales region"
+
+      - name: RAW_PRODUCTS
+        description: "Raw product catalog -- 100 products"
+        columns:
+          - name: product_id
+            description: "Unique product identifier"
+          - name: category
+            description: "Product category"
+          - name: unit_price
+            description: "Selling price per unit"
+
+      - name: RAW_ORDERS
+        description: "Raw orders data -- 10000 transactions"
+        columns:
+          - name: order_id
+            description: "Unique order identifier"
+          - name: customer_id
+            description: "Foreign key to customers"
+          - name: product_id
+            description: "Foreign key to products"
+          - name: total_amount
+            description: "Total order value after discount"
+          - name: status
+            description: "Order status: Completed, Pending, Cancelled, Returned"
