@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned customer data from RAW layer"
+    columns:
+      - name: customer_id
+        description: "Unique customer identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: email
+        description: "Customer email address"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: region
+        description: "Geographic region"
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [NORTH, SOUTH, EAST, WEST, CENTRAL]
+
+  - name: stg_products
+    description: "Cleaned product data from RAW layer"
+    columns:
+      - name: product_id
+        description: "Unique product identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: unit_price
+        description: "Selling price per unit"
+        data_tests:
+          - not_null
+
+      - name: category
+        description: "Product category"
+        data_tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Cleaned orders data from RAW layer"
+    columns:
+      - name: order_id
+        description: "Unique order identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Foreign key to customers"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+
+      - name: product_id
+        description: "Foreign key to products"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+      - name: status
+        description: "Order status"
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [COMPLETED, PENDING, CANCELLED, RETURNED]
+
+      - name: total_amount
+        description: "Total order value"
+        data_tests:
+          - not_null
