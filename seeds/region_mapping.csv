@@ -1,0 +1,6 @@
+region,region_full_name,country,timezone,manager
+NORTH,Northern Region,India,IST,Regional Manager North
+SOUTH,Southern Region,India,IST,Regional Manager South
+EAST,Eastern Region,India,IST,Regional Manager East
+WEST,Western Region,India,IST,Regional Manager West
+CENTRAL,Central Region,India,IST,Regional Manager Central
